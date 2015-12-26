@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Tests with vue.js</title>
+    <script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="app">
+        <input id="newtodo" v-model="newtodo" v-on:keyup.enter="add">
+        <button v-on:click="add">Add todo</button>
+
+        <ul>
+            <li v-for="todo in todos">
+                <span>{{todo.num}}: {{ todo.text }}</span>
+                <button v-on:click="remove($index)">X</button>
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            newtodo: [],
+            todos: [{num: 1, text: "daniele"}]
+        },
+        methods: {
+            add: function(e) {
+                this.todos.push( {num: this.todos.length, text: this.newtodo} )
+                this.newtodo = '';
+                document.getElementById('newtodo').focus();
+            },
+            remove(num) {
+                this.todos.splice( num,1 )
+            }
+        }
+    })
+</script>
+</html>

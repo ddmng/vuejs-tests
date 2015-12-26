@@ -1,0 +1,4 @@
+#newtodo {
+    -webkit-transition: width 5s, height 4s; /* Safari */
+    transition: width 5s, height 4s;
+}
